@@ -2,6 +2,10 @@
 
 This is the producer service component of the NestJS microservices architecture. It exposes REST APIs that send messages to RabbitMQ using both event-driven and RPC patterns.
 
+## License
+
+This project is licensed under the MIT License - see [LICENSE.txt](../LICENSE.txt) for details.
+
 ## Features
 
 1. **Event-Driven Endpoints**
