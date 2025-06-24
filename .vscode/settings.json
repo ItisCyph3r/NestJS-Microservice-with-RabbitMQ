@@ -1,0 +1,8 @@
+{
+  "eslint.enable": false,
+  "prettier.enable": true,
+  "editor.formatOnSave": true,
+  "typescript.validate.enable": true,
+  "javascript.validate.enable": true,
+  "files.eol": "\n"
+}
