@@ -1,73 +1,70 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NestJS Producer Service
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is the producer service component of the NestJS microservices architecture. It exposes REST APIs that send messages to RabbitMQ using both event-driven and RPC patterns.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+1. **Event-Driven Endpoints**
+   - Place orders through RabbitMQ
+   - Asynchronous message processing
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+2. **RPC Endpoints**
+   - Validate orders with request/response pattern
+   - Synchronous communication with consumer
 
-## Installation
+## API Endpoints
 
-```bash
-$ npm install
+### Event-Driven
+
+- `POST /orders/place-order` - Place a new order
+  ```json
+  {
+    "email": "string",
+    "productName: "string,
+    "quantity": number
+  }
+  ```
+
+## Configuration
+
+The service uses environment variables for configuration. Copy `.env.example` to `.env` and update the following:
+
+```env
+RABBITMQ_PORT=5672
+RABBITMQ_MANAGEMENT_PORT=15672
+RABBITMQ_URL=amqp://guest:guest@localhost:5672
 ```
 
-## Running the app
+## Running the Service
 
-```bash
-# development
-$ npm run start
+1. Start RabbitMQ using Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
 
-# watch mode
-$ npm run start:dev
+2. Install dependencies and start the service:
+   ```bash
+   npm install
+   npm run start:dev
+   ```
 
-# production mode
-$ npm run start:prod
-```
+3. Verify setup:
+   - RabbitMQ Management UI: http://localhost:15672
+   - Service API: http://localhost:9000
 
-## Test
+## Development
 
-```bash
-# unit tests
-$ npm run test
+- **Testing**
+  ```bash
+  npm run test
+  ```
 
-# e2e tests
-$ npm run test:e2e
+- **Linting**
+  ```bash
+  npm run lint
+  ```
 
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- **Code Style**
+  ```bash
+  npm run format
+  ```
