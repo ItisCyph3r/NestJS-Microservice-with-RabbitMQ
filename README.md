@@ -82,8 +82,8 @@ NestJs-Microservice-RabbitMQ/
 - `POST /orders/place-order` - Place a new order
   ```json
   {
-    "email": "string",
-    "productName: "string",
+    "email": string,
+    "productName": string,
     "quantity": number
   }
   ```
