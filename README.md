@@ -83,7 +83,7 @@ NestJs-Microservice-RabbitMQ/
   ```json
   {
     "email": "string",
-    "productName: "string,
+    "productName: "string",
     "quantity": number
   }
   ```
