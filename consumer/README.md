@@ -17,8 +17,8 @@ This is the consumer service component of the NestJS microservices architecture.
 The service uses environment variables for configuration. Copy `.env.example` to `.env` and update the following:
 
 ```env
-RABBITMQ_PORT=5672
-RABBITMQ_MANAGEMENT_PORT=15672
+PORT=9001
+NODE_ENV=development
 RABBITMQ_URL=amqp://guest:guest@localhost:5672
 ```
 
